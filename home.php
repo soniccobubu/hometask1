@@ -1,15 +1,17 @@
 <?php
-echo "Enter text: (up to 200 words) ";
+echo "Enter text: (at least one word and up till 200 words) ";
 $input = fgets(STDIN);
 $input = rtrim($input);
-$input1='';
-$spaces=0;
 
+function f($input){
+    $input1='';
+    $spaces=1;
 $inputArray = str_split($input);
 
 foreach ($inputArray as $i){
-    if ($i == " "){
-        $spaces+=1;
+    $char = ord($i);
+    if ($char == 32){
+        $spaces=$spaces+1;
     }
 }
 
@@ -25,6 +27,12 @@ if ($spaces <= 200){
             $input1 .= $i1;
         }
     }
-    echo $input1;
+
+    echo $input1.PHP_EOL;
 }
+else {
+    echo "Too many words";
+}
+}
+f($input.PHP_EOL);
 ?>
